@@ -1,14 +1,14 @@
 # Nette Tester
 
-[![Docker Stars](https://img.shields.io/docker/stars/dockette/nette-tester.svg?style=flat)](https://hub.docker.com/r/dockette/letsencrypt/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/dockette/nette-tester.svg?style=flat)](https://hub.docker.com/r/dockette/letsencrypt/)
+[![Docker Stars](https://img.shields.io/docker/stars/kubiq/nette-tester.svg?style=flat)](https://hub.docker.com/r/thebiftek/nette-tester/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/kubiq/nette-tester.svg?style=flat)](https://hub.docker.com/r/thebiftek/nette-tester/)
 
-Test your application / library in a Docker container.
+Test your application / library in a Docker container with php 7.0.
 
 ## Tools
 
 - Debian Jessie
-- PHP 5.6
+- PHP 7.0
 - Git
 - cURL
 - Composer
@@ -26,7 +26,7 @@ On default is command `tester -s -j 40 -p php /srv/app` called.
 ```sh
 docker run \
     -v /path/to/myapp:/srv/app \
-    dockette/nette-tester:latest
+    thebiftek/nette-tester:latest
 ```
 
 ### Custom
@@ -50,12 +50,12 @@ docker run \
     -e WATCH=1 \
     -e THREADS=10 \
     -e PHP='php-cgi' \
-    dockette/nette-tester:latest \
+    thebiftek/nette-tester:latest \
 ```
 
 ```sh
 docker run \
     -v /path/to/myapp:/srv/app \
     -e SCRIPT='/srv/app/vendor/bin/tester -s -p php -j 30 /srv/app/tests' \
-    dockette/nette-tester:latest
+    thebiftek/nette-tester:latest
 ```

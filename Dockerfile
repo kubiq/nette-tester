@@ -6,9 +6,24 @@ ENV TESTER_PATH /srv/tester/
 ENV TESTER_BIN /srv/tester/vendor/bin/tester
 ENV APP_PATH /srv/app/
 
+ADD dotdeb.gpg /root/dotdeb.gpg
+RUN apt-key add /root/dotdeb.gpg
+RUN echo 'deb http://packages.dotdeb.org jessie all' >> /etc/apt/sources.list.d/dotdeb.list
+
 # Install PHP, cURL, Git
-RUN apt-get update && \
-    apt-get install -y git curl php5-cli php5-cgi php5-mysql php5-pgsql php5-mcrypt php5-curl php5-json
+RUN apt-get update -qqy \
+  && apt-get -qqy install \
+    php7.0-cli \
+    php7.0-cgi \
+    php7.0-mysql \
+    php7.0-pgsql \
+    php7.0-mcrypt \
+    php7.0-curl \
+    php7.0-json \
+    php7.0-xml \
+    curl \
+    git \
+    unzip
 
 # Install Composer, Nette Tester
 RUN curl -sS https://getcomposer.org/installer | php && \
